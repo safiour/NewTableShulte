@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableShurle", "TableShurle\TableShurle.csproj", "{0FA5493C-463F-43C8-BDD5-D9698854E08F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0FA5493C-463F-43C8-BDD5-D9698854E08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA5493C-463F-43C8-BDD5-D9698854E08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA5493C-463F-43C8-BDD5-D9698854E08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA5493C-463F-43C8-BDD5-D9698854E08F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {803AFE3F-2DF7-4BDF-B5EF-E76AD5AAA263}
+	EndGlobalSection
+EndGlobal
