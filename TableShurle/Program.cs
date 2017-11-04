@@ -27,5 +27,7 @@ namespace TableShurle
         public static int SizeTable = 7;// Table size
         public static bool ColoredNumber = true; //Painted even numbers
 		public static int ControlCount = 0;// Control finish click
-    }
+		public static int SecondCount = 0;// Timer Second
+		public static int MinuteCount = 0;// Timer Minute
+	}
 }

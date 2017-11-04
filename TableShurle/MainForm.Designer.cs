@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.tsmuMainMenu = new System.Windows.Forms.ToolStripMenuItem();
 			this.tsmiSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +40,7 @@
 			this.tsslTimer = new System.Windows.Forms.ToolStripStatusLabel();
 			this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
 			this.tsslLastNumber = new System.Windows.Forms.ToolStripStatusLabel();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -135,6 +137,11 @@
 			this.tsslLastNumber.Size = new System.Drawing.Size(54, 17);
 			this.tsslLastNumber.Text = "Ищем: 0";
 			// 
+			// timer1
+			// 
+			this.timer1.Interval = 1000;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
 			// frmMainForm
 			// 
 			this.AllowDrop = true;
@@ -172,6 +179,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel tsslTimer;
 		private System.Windows.Forms.ToolStripProgressBar tspbProgress;
 		private System.Windows.Forms.ToolStripStatusLabel tsslLastNumber;
+		private System.Windows.Forms.Timer timer1;
 	}
 }
 

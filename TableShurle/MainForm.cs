@@ -38,6 +38,8 @@ namespace TableShurle
             SetSizePanel();
 			GenerateArray();
 			Data.ControlCount = 0;
+			Data.SecondCount = 0;
+			Data.MinuteCount = 0;
             
          /*--- Create LABEL's in TabelLayoutPanel for input Massive ---*/
             for (int i = 0; i < Data.SizeTable; i++)
@@ -56,9 +58,12 @@ namespace TableShurle
                 }
             }
 			tsslLastNumber.Text = "Ищем: 1";
+			tsslTimer.Text = "t 0:00:00";
 			tspbProgress.Value = Data.ControlCount;
 			tspbProgress.Maximum = Data.SizeTable * Data.SizeTable;
 			this.Show();
+			timer1.Enabled = true;
+			timer1.Start();
 
 		}
         
@@ -118,5 +123,46 @@ namespace TableShurle
             }
         }
 
-    }
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			Data.SecondCount++;
+
+			if (Data.SecondCount < 10)
+			{
+				if (Data.MinuteCount < 10)
+				{
+					tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
+				}
+				else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
+
+			}
+			else if (Data.SecondCount < 60)
+			{
+				if (Data.MinuteCount < 10)
+				{
+					tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
+				}
+				else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
+			}
+			else if (Data.SecondCount == 60 && Data.MinuteCount < 59)
+			{
+				Data.MinuteCount++;
+				Data.SecondCount -= 60;
+				if (Data.MinuteCount < 10)
+				{
+					tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":00";
+				}
+				else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":00";
+
+			}
+			else
+			{
+				timer1.Stop();
+				timer1.Enabled = false;
+				Data.SecondCount = 0;
+				Data.MinuteCount = 0;
+				MessageBox.Show("Ты проиграл!");
+			}
+		}
+	}
 }
