@@ -57,20 +57,10 @@ namespace TableShurle
                     labelXY.Text = TableMassive[i, j].ToString();
                 }
             }
-			if (Data.ControlResult == true)
-			{
-				tsslLastNumber.Text = "Ищем: 1";
-				tsslTimer.Text = "0:00:00";
-				timer1.Enabled = true;
-				timer1.Start();
-			}
-			else
-			{
-				tsslTimer.Text = "Проба сил";
-			}
-
+			tsslLastNumber.Text = "Ищем: 1";
 			tspbProgress.Value = Data.ControlCount;
 			tspbProgress.Maximum = Data.SizeTable * Data.SizeTable;
+			this.Show();
 
 			this.Show(); //Show the form
 
@@ -132,42 +122,9 @@ namespace TableShurle
 				Data.SecondCount = 0;
 				Data.MinuteCount = 0;
 				tsslLastNumber.Text = "Победа!";
-				MessageBox.Show("Ты победил, чувак!\n Твой результат: "+tsslTimer.Text );
-
-			}
+				MessageBox.Show("Ты победил, чувак!\nТвой результат: пока не знаю как посчитать:)" );
+            }
         }
-
-		/*--- Timer ---*/
-		private void timer1_Tick(object sender, EventArgs e)
-		{
-			Data.SecondCount++;
-
-			if (Data.SecondCount < 10)
-			{
-				if (Data.MinuteCount < 10)
-				{
-					tsslTimer.Text = "0:0" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
-				}
-				else tsslTimer.Text = "0:" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
-
-			}
-			else if (Data.SecondCount < 60)
-			{
-				if (Data.MinuteCount < 10)
-				{
-					tsslTimer.Text = "0:0" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
-				}
-				else tsslTimer.Text = "0:" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
-			}
-			else if (Data.SecondCount == 60 && Data.MinuteCount < 59)
-			{
-				Data.MinuteCount++;
-				Data.SecondCount -= 60;
-				if (Data.MinuteCount < 10)
-				{
-					tsslTimer.Text = "0:0" + Convert.ToString(Data.MinuteCount) + ":00";
-				}
-				else tsslTimer.Text = "0:" + Convert.ToString(Data.MinuteCount) + ":00";
 
 			}
 			else
