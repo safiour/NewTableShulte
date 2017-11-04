@@ -36,6 +36,7 @@ namespace TableShurle
         private void btnSetSettings_Click(object sender, EventArgs e)
         {
 			Data.SizeTable = tbSize.Value;
+			Data.ColoredNumber = cbColoredNumber.Checked;
             this.Close();
 
         }
@@ -45,5 +46,10 @@ namespace TableShurle
             tbSize.Value = Data.SizeTable;
             lblSize.Text = Convert.ToString(tbSize.Value) + " x " + Convert.ToString(tbSize.Value);
         }
-    }
+
+		private void panel2_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+	}
 }
