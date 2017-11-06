@@ -10,6 +10,7 @@ namespace TableShurle
     {
 		int[,] TableMassive; 
 		Random rand = new Random();
+		DateTime ControlTimer;// = new DateTime(0, 0);
 
 		public frmMainForm()
         {
@@ -34,9 +35,10 @@ namespace TableShurle
 		/*--- Generated new Table ---*/
 		private void tsmiNewTable_Click(object sender, EventArgs e)
         {
-			this.Hide(); // hide the form because it blinks when you create a table
-			SetSizePanel();
+			this.Hide();
+            SetSizePanel();
 			GenerateArray();
+			ControlTimer = new DateTime(0, 0);
 			Data.ControlCount = 0;
 			Data.SecondCount = 0;
 			Data.MinuteCount = 0;
@@ -57,12 +59,14 @@ namespace TableShurle
                     labelXY.Text = TableMassive[i, j].ToString();
                 }
             }
+
 			tsslLastNumber.Text = "Ищем: 1";
+			tsslTimer.Text = "Таймер: 00:00:00";
 			tspbProgress.Value = Data.ControlCount;
 			tspbProgress.Maximum = Data.SizeTable * Data.SizeTable;
 			this.Show();
-
-			this.Show(); //Show the form
+			timer1.Enabled = true;
+			timer1.Start();
 
 		}
         
@@ -117,21 +121,59 @@ namespace TableShurle
                 }
             if (Data.ControlCount == Data.SizeTable * Data.SizeTable)
             {
-				timer1.Stop();
-				timer1.Enabled = false;
-				Data.SecondCount = 0;
-				Data.MinuteCount = 0;
 				tsslLastNumber.Text = "Победа!";
 				MessageBox.Show("Ты победил, чувак!\nТвой результат: пока не знаю как посчитать:)" );
             }
-			else
-			{
-				timer1.Stop();
-				timer1.Enabled = false;
-				Data.SecondCount = 0;
-				Data.MinuteCount = 0;
-				MessageBox.Show("Ты проиграл!");
-			}
+        }
+
+		private void timer1_Tick(object sender, EventArgs e)
+		{
+			#region Old Timer
+
+			//Data.SecondCount++;
+			//if (Data.SecondCount < 10)
+			//{
+			//	if (Data.MinuteCount < 10)
+			//	{
+			//		tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
+			//	}
+			//	else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
+
+			//}
+			//else if (Data.SecondCount < 60)
+			//{
+			//	if (Data.MinuteCount < 10)
+			//	{
+			//		tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
+			//	}
+			//	else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
+			//}
+			//else if (Data.SecondCount == 60 && Data.MinuteCount < 59)
+			//{
+			//	Data.MinuteCount++;
+			//	Data.SecondCount -= 60;
+			//	if (Data.MinuteCount < 10)
+			//	{
+			//		tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":00";
+			//	}
+			//	else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":00";
+
+			//}
+			//else
+			//{
+			//	timer1.Stop();
+			//	timer1.Enabled = false;
+			//	Data.SecondCount = 0;
+			//	Data.MinuteCount = 0;
+			//	MessageBox.Show("Ты проиграл!");
+			//}
+			#endregion
+
+			#region New Timer
+			ControlTimer = ControlTimer.AddSeconds(1);
+			tsslTimer.Text = "Таймер: " + (ControlTimer).ToString("HH:mm:ss");
+			#endregion
+
 		}
 	}
 }
