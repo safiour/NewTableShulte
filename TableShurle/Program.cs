@@ -29,5 +29,6 @@ namespace TableShurle
 		public static int ControlCount = 0;// Control finish click
 		public static int SecondCount = 0;// Timer Second
 		public static int MinuteCount = 0;// Timer Minute
+		//public static DateTime ControlTimer;// = new DateTime(0, 0);
 	}
 }

@@ -123,8 +123,8 @@
 			// tsslTimer
 			// 
 			this.tsslTimer.Name = "tsslTimer";
-			this.tsslTimer.Size = new System.Drawing.Size(50, 17);
-			this.tsslTimer.Text = "t 0:00:00";
+			this.tsslTimer.Size = new System.Drawing.Size(97, 17);
+			this.tsslTimer.Text = "Таймер: 00:00:00";
 			// 
 			// tspbProgress
 			// 
