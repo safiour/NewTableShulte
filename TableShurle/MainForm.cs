@@ -124,9 +124,6 @@ namespace TableShurle
 				tsslLastNumber.Text = "Победа!";
 				MessageBox.Show("Ты победил, чувак!\nТвой результат: пока не знаю как посчитать:)" );
             }
-        }
-
-			}
 			else
 			{
 				timer1.Stop();
