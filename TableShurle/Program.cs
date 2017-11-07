@@ -25,8 +25,9 @@ namespace TableShurle
     static class Data
     {
         public static int SizeTable = 7;// Table size
-        public static bool ColoredNumber = true; //Painted even numbers
-		public static int ControlCount = 0;// Control finish click
+        public static bool ColoredNumber = true; // To color even numbers
+		public static bool ControlResult = true; // To control time result and record it
+		public static int ControlCount = 0;// Control finish click count
 		public static int SecondCount = 0;// Timer Second
 		public static int MinuteCount = 0;// Timer Minute
 	}

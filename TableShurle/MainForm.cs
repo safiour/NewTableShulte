@@ -34,8 +34,8 @@ namespace TableShurle
 		/*--- Generated new Table ---*/
 		private void tsmiNewTable_Click(object sender, EventArgs e)
         {
-			this.Hide();
-            SetSizePanel();
+			this.Hide(); // hide the form because it blinks when you create a table
+			SetSizePanel();
 			GenerateArray();
 			Data.ControlCount = 0;
 			Data.SecondCount = 0;
@@ -57,13 +57,22 @@ namespace TableShurle
                     labelXY.Text = TableMassive[i, j].ToString();
                 }
             }
-			tsslLastNumber.Text = "Ищем: 1";
-			tsslTimer.Text = "t 0:00:00";
+			if (Data.ControlResult == true)
+			{
+				tsslLastNumber.Text = "Ищем: 1";
+				tsslTimer.Text = "0:00:00";
+				timer1.Enabled = true;
+				timer1.Start();
+			}
+			else
+			{
+				tsslTimer.Text = "Проба сил";
+			}
+
 			tspbProgress.Value = Data.ControlCount;
 			tspbProgress.Maximum = Data.SizeTable * Data.SizeTable;
-			this.Show();
-			timer1.Enabled = true;
-			timer1.Start();
+
+			this.Show(); //Show the form
 
 		}
         
@@ -118,11 +127,17 @@ namespace TableShurle
                 }
             if (Data.ControlCount == Data.SizeTable * Data.SizeTable)
             {
+				timer1.Stop();
+				timer1.Enabled = false;
+				Data.SecondCount = 0;
+				Data.MinuteCount = 0;
 				tsslLastNumber.Text = "Победа!";
-				MessageBox.Show("Ты победил, чувак!\nТвой результат: пока не знаю как посчитать:)" );
-            }
+				MessageBox.Show("Ты победил, чувак!\n Твой результат: "+tsslTimer.Text );
+
+			}
         }
 
+		/*--- Timer ---*/
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			Data.SecondCount++;
@@ -131,18 +146,18 @@ namespace TableShurle
 			{
 				if (Data.MinuteCount < 10)
 				{
-					tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
+					tsslTimer.Text = "0:0" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
 				}
-				else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
+				else tsslTimer.Text = "0:" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
 
 			}
 			else if (Data.SecondCount < 60)
 			{
 				if (Data.MinuteCount < 10)
 				{
-					tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
+					tsslTimer.Text = "0:0" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
 				}
-				else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
+				else tsslTimer.Text = "0:" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
 			}
 			else if (Data.SecondCount == 60 && Data.MinuteCount < 59)
 			{
@@ -150,9 +165,9 @@ namespace TableShurle
 				Data.SecondCount -= 60;
 				if (Data.MinuteCount < 10)
 				{
-					tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":00";
+					tsslTimer.Text = "0:0" + Convert.ToString(Data.MinuteCount) + ":00";
 				}
-				else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":00";
+				else tsslTimer.Text = "0:" + Convert.ToString(Data.MinuteCount) + ":00";
 
 			}
 			else

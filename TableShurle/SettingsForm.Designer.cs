@@ -36,7 +36,7 @@
 			this.btnSetSettings = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.cbColoredNumber = new System.Windows.Forms.CheckBox();
-			this.cbControlTime = new System.Windows.Forms.CheckBox();
+			this.cbControlResult = new System.Windows.Forms.CheckBox();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.tbSize)).BeginInit();
 			this.panel2.SuspendLayout();
@@ -129,22 +129,24 @@
 			this.cbColoredNumber.Text = "Окрашивать четные числа";
 			this.cbColoredNumber.UseVisualStyleBackColor = true;
 			// 
-			// cbControlTime
+			// cbControlResult
 			// 
-			this.cbControlTime.AutoSize = true;
-			this.cbControlTime.Location = new System.Drawing.Point(8, 96);
-			this.cbControlTime.Name = "cbControlTime";
-			this.cbControlTime.Size = new System.Drawing.Size(144, 17);
-			this.cbControlTime.TabIndex = 6;
-			this.cbControlTime.Text = "Контролировать время";
-			this.cbControlTime.UseVisualStyleBackColor = true;
+			this.cbControlResult.AutoSize = true;
+			this.cbControlResult.Checked = true;
+			this.cbControlResult.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cbControlResult.Location = new System.Drawing.Point(8, 96);
+			this.cbControlResult.Name = "cbControlResult";
+			this.cbControlResult.Size = new System.Drawing.Size(131, 17);
+			this.cbControlResult.TabIndex = 6;
+			this.cbControlResult.Text = "Измерять результат";
+			this.cbControlResult.UseVisualStyleBackColor = true;
 			// 
 			// frmSettings
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(284, 176);
-			this.Controls.Add(this.cbControlTime);
+			this.Controls.Add(this.cbControlResult);
 			this.Controls.Add(this.cbColoredNumber);
 			this.Controls.Add(this.panel2);
 			this.Controls.Add(this.panel1);
@@ -169,6 +171,6 @@
         private System.Windows.Forms.Button btnSetSettings;
         private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.CheckBox cbColoredNumber;
-		private System.Windows.Forms.CheckBox cbControlTime;
+		private System.Windows.Forms.CheckBox cbControlResult;
 	}
 }

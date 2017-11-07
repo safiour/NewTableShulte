@@ -41,8 +41,19 @@
 			this.tspbProgress = new System.Windows.Forms.ToolStripProgressBar();
 			this.tsslLastNumber = new System.Windows.Forms.ToolStripStatusLabel();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.dataSet1 = new System.Data.DataSet();
+			this.dataTable1 = new System.Data.DataTable();
+			this.dataColumn1 = new System.Data.DataColumn();
+			this.dataColumn2 = new System.Data.DataColumn();
+			this.dataColumn3 = new System.Data.DataColumn();
+			this.dataTable2 = new System.Data.DataTable();
+			this.dataColumn4 = new System.Data.DataColumn();
+			this.dataColumn5 = new System.Data.DataColumn();
 			this.menuStrip1.SuspendLayout();
 			this.statusStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -123,8 +134,8 @@
 			// tsslTimer
 			// 
 			this.tsslTimer.Name = "tsslTimer";
-			this.tsslTimer.Size = new System.Drawing.Size(50, 17);
-			this.tsslTimer.Text = "t 0:00:00";
+			this.tsslTimer.Size = new System.Drawing.Size(43, 17);
+			this.tsslTimer.Text = "0:00:00";
 			// 
 			// tspbProgress
 			// 
@@ -141,6 +152,53 @@
 			// 
 			this.timer1.Interval = 1000;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// dataSet1
+			// 
+			this.dataSet1.DataSetName = "NewDataSet";
+			this.dataSet1.Tables.AddRange(new System.Data.DataTable[] {
+            this.dataTable1,
+            this.dataTable2});
+			// 
+			// dataTable1
+			// 
+			this.dataTable1.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn1,
+            this.dataColumn2,
+            this.dataColumn3});
+			this.dataTable1.TableName = "Результаты";
+			// 
+			// dataColumn1
+			// 
+			this.dataColumn1.Caption = "Размер Таблиц";
+			this.dataColumn1.ColumnName = "SizeTable";
+			// 
+			// dataColumn2
+			// 
+			this.dataColumn2.Caption = "Имя";
+			this.dataColumn2.ColumnName = "User";
+			// 
+			// dataColumn3
+			// 
+			this.dataColumn3.Caption = "Результат";
+			this.dataColumn3.ColumnName = "Result";
+			// 
+			// dataTable2
+			// 
+			this.dataTable2.Columns.AddRange(new System.Data.DataColumn[] {
+            this.dataColumn4,
+            this.dataColumn5});
+			this.dataTable2.TableName = "Настройки";
+			// 
+			// dataColumn4
+			// 
+			this.dataColumn4.Caption = "Настройка";
+			this.dataColumn4.ColumnName = "Settings";
+			// 
+			// dataColumn5
+			// 
+			this.dataColumn5.Caption = "Значение";
+			this.dataColumn5.ColumnName = "Value";
 			// 
 			// frmMainForm
 			// 
@@ -161,6 +219,9 @@
 			this.menuStrip1.PerformLayout();
 			this.statusStrip1.ResumeLayout(false);
 			this.statusStrip1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -180,6 +241,14 @@
 		private System.Windows.Forms.ToolStripProgressBar tspbProgress;
 		private System.Windows.Forms.ToolStripStatusLabel tsslLastNumber;
 		private System.Windows.Forms.Timer timer1;
+		private System.Data.DataSet dataSet1;
+		private System.Data.DataTable dataTable1;
+		private System.Data.DataColumn dataColumn1;
+		private System.Data.DataColumn dataColumn2;
+		private System.Data.DataColumn dataColumn3;
+		private System.Data.DataTable dataTable2;
+		private System.Data.DataColumn dataColumn4;
+		private System.Data.DataColumn dataColumn5;
 	}
 }
 

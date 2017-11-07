@@ -37,6 +37,7 @@ namespace TableShurle
         {
 			Data.SizeTable = tbSize.Value;
 			Data.ColoredNumber = cbColoredNumber.Checked;
+			Data.ControlResult = cbControlResult.Checked;
             this.Close();
 
         }
@@ -44,6 +45,8 @@ namespace TableShurle
         private void frmSettings_Load(object sender, EventArgs e)
         {
             tbSize.Value = Data.SizeTable;
+			cbColoredNumber.Checked = Data.ColoredNumber;
+			cbControlResult.Checked = Data.ControlResult;
             lblSize.Text = Convert.ToString(tbSize.Value) + " x " + Convert.ToString(tbSize.Value);
         }
 
