@@ -40,8 +40,8 @@ namespace TableShurle
 			GenerateArray();
 			ControlTimer = new DateTime(0, 0);
 			Data.ControlCount = 0;
-			Data.SecondCount = 0;
-			Data.MinuteCount = 0;
+			//Data.SecondCount = 0;
+			//Data.MinuteCount = 0;
             
          /*--- Create LABEL's in TabelLayoutPanel for input Massive ---*/
             for (int i = 0; i < Data.SizeTable; i++)
@@ -61,12 +61,21 @@ namespace TableShurle
             }
 
 			tsslLastNumber.Text = "Ищем: 1";
-			tsslTimer.Text = "Таймер: 00:00:00";
+			if (Data.ControlResult == true)
+			{
+				tsslTimer.Text = "Таймер: 00:00:00";
+				timer1.Enabled = true;
+				timer1.Start();
+			}
+			else
+			{
+				tsslTimer.Text = "Тренировка";
+			}
+			
 			tspbProgress.Value = Data.ControlCount;
 			tspbProgress.Maximum = Data.SizeTable * Data.SizeTable;
 			this.Show();
-			timer1.Enabled = true;
-			timer1.Start();
+
 
 		}
         
@@ -122,53 +131,21 @@ namespace TableShurle
             if (Data.ControlCount == Data.SizeTable * Data.SizeTable)
             {
 				tsslLastNumber.Text = "Победа!";
-				MessageBox.Show("Ты победил, чувак!\nТвой результат: пока не знаю как посчитать:)" );
+				string sResult = "";
+				if (Data.ControlResult == true)
+				{
+					sResult = "Твой результат: " + tsslTimer.Text;
+					timer1.Stop();
+					timer1.Enabled = false;
+				}
+				
+				MessageBox.Show("Ты победил!\n\n" + sResult);
             }
         }
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			#region Old Timer
-
-			//Data.SecondCount++;
-			//if (Data.SecondCount < 10)
-			//{
-			//	if (Data.MinuteCount < 10)
-			//	{
-			//		tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
-			//	}
-			//	else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":0" + Convert.ToString(Data.SecondCount);
-
-			//}
-			//else if (Data.SecondCount < 60)
-			//{
-			//	if (Data.MinuteCount < 10)
-			//	{
-			//		tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
-			//	}
-			//	else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":" + Convert.ToString(Data.SecondCount);
-			//}
-			//else if (Data.SecondCount == 60 && Data.MinuteCount < 59)
-			//{
-			//	Data.MinuteCount++;
-			//	Data.SecondCount -= 60;
-			//	if (Data.MinuteCount < 10)
-			//	{
-			//		tsslTimer.Text = "t 0:0" + Convert.ToString(Data.MinuteCount) + ":00";
-			//	}
-			//	else tsslTimer.Text = "t 0:" + Convert.ToString(Data.MinuteCount) + ":00";
-
-			//}
-			//else
-			//{
-			//	timer1.Stop();
-			//	timer1.Enabled = false;
-			//	Data.SecondCount = 0;
-			//	Data.MinuteCount = 0;
-			//	MessageBox.Show("Ты проиграл!");
-			//}
-			#endregion
-
+		
 			#region New Timer
 			ControlTimer = ControlTimer.AddSeconds(1);
 			tsslTimer.Text = "Таймер: " + (ControlTimer).ToString("HH:mm:ss");
